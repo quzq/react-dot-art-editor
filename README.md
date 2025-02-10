@@ -11,6 +11,11 @@ This project is a simple dot art editor built with React and TypeScript. It feat
 - **Real-Time JSON Output:** Both the palette and grid state are shown in JSON format. Changes in the text areas update the editor state once you move focus away from the text area.
 - **Direct JSON Editing:** Edit the JSON directly to update the palette and grid state; changes are applied immediately after editing.
 
+## Deployed Site
+
+The application is deployed and can be accessed at:  
+[https://quzq.github.io/react-dot-art-editor/](https://quzq.github.io/react-dot-art-editor/)
+
 ## Installation
 
 1. **Clone the repository:**
