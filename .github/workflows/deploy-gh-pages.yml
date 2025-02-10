@@ -36,6 +36,11 @@ jobs:
         run: npm ci && npm run build
         env:
           PUBLIC_URL: /Example_App
+
+      # ここでビルド出力フォルダの内容を確認
+      - name: List dist folder
+        run: ls -al ./dist
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
