@@ -75,7 +75,7 @@ const App: React.FC = () => {
       <div className="controls">
         <div className="color-selectors">
           <label>
-            色1:
+            color1:
             <input
               type="color"
               value={color1}
@@ -85,7 +85,7 @@ const App: React.FC = () => {
             />
           </label>
           <label>
-            色2:
+            color2:
             <input
               type="color"
               value={color2}
@@ -95,7 +95,7 @@ const App: React.FC = () => {
             />
           </label>
           <label>
-            色3:
+            color3:
             <input
               type="color"
               value={color3}
@@ -106,13 +106,13 @@ const App: React.FC = () => {
           </label>
         </div>
         <div className="pen-selector">
-          <p>ペン選択:</p>
+          <p>pen selector:</p>
           <button
             className={currentPen === 0 ? "selected" : ""}
             onClick={() => setCurrentPen(0)}
             style={{ backgroundColor: "white", border: "1px solid #ccc" }}
           >
-            透明
+            0
           </button>
           <button
             className={currentPen === 1 ? "selected" : ""}
@@ -166,7 +166,7 @@ const App: React.FC = () => {
         ))}
       </div>
       <div className="output">
-        <h3>結果</h3>
+        <h3>output</h3>
         <h4>palette</h4>
         <textarea
           value={paletteInput}
