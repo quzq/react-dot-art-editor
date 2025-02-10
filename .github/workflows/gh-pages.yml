@@ -28,6 +28,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          repository: quzq/react-dot-art-editor
+          token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages # The branch the action should deploy to.
           folder: dist # The folder to deploy (Vite outputs to "dist" by default).
