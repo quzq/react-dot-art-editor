@@ -146,7 +146,7 @@ const App: React.FC = () => {
                 cell === 0
                   ? {
                       backgroundImage:
-                        "linear-gradient(45deg, #fff 25%, #000 25%, #000 75%, #fff 75%, #fff), linear-gradient(45deg, #fff 25%, #000 25%, #000 75%, #fff 75%, #fff)",
+                        "linear-gradient(45deg, #fff 25%, #ccc 25%, #ccc 75%, #fff 75%, #fff), linear-gradient(45deg, #fff 25%, #ccc 25%, #ccc 75%, #fff 75%, #fff)",
                       backgroundSize: "10px 10px",
                       backgroundPosition: "0 0, 5px 5px",
                     }
