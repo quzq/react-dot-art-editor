@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./App.css";
 
 const GRID_SIZE = 8; // 8x8 グリッド
 const INITIAL_CELL = 0; // 0: 透明
@@ -57,7 +58,6 @@ const App: React.FC = () => {
 
   return (
     <div className="App" onMouseUp={handleMouseUp}>
-      <h1>シンプルドット絵エディタ (8x8)</h1>
       <div className="controls">
         <div className="color-selectors">
           <label>
