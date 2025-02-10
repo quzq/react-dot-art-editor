@@ -105,21 +105,21 @@ const App: React.FC = () => {
             onClick={() => setCurrentPen(1)}
             style={{ backgroundColor: color1 }}
           >
-            色1
+            1
           </button>
           <button
             className={currentPen === 2 ? "selected" : ""}
             onClick={() => setCurrentPen(2)}
             style={{ backgroundColor: color2 }}
           >
-            色2
+            2
           </button>
           <button
             className={currentPen === 3 ? "selected" : ""}
             onClick={() => setCurrentPen(3)}
             style={{ backgroundColor: color3 }}
           >
-            色3
+            3
           </button>
         </div>
       </div>
@@ -152,7 +152,15 @@ const App: React.FC = () => {
         ))}
       </div>
       <div className="output">
-        <h2>結果 (コピー可能なテキスト)</h2>
+        <h3>結果</h3>
+        <h4>palette</h4>
+        <textarea
+          readOnly
+          value={JSON.stringify([color1, color2, color3])}
+          rows={2}
+          cols={50}
+        />
+        <h4>matrix</h4>
         <textarea readOnly value={gridToText()} rows={10} cols={50} />
       </div>
     </div>
