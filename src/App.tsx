@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 const GRID_SIZE = 8; // 8x8 グリッド
@@ -27,6 +27,23 @@ const App: React.FC = () => {
     3: color3,
   };
 
+  // palette 用テキストエリアの入力状態
+  const [paletteInput, setPaletteInput] = useState<string>(
+    JSON.stringify([color1, color2, color3])
+  );
+  // grid 用テキストエリアの入力状態
+  const [gridInput, setGridInput] = useState<string>(JSON.stringify(grid));
+
+  // 色が変更されたとき、paletteInput を更新
+  useEffect(() => {
+    setPaletteInput(JSON.stringify([color1, color2, color3]));
+  }, [color1, color2, color3]);
+
+  // grid が変更されたとき、gridInput を更新
+  useEffect(() => {
+    setGridInput(JSON.stringify(grid));
+  }, [grid]);
+
   // セルの状態を更新する関数
   const updateCell = (row: number, col: number) => {
     setGrid((prevGrid) =>
@@ -52,9 +69,6 @@ const App: React.FC = () => {
   const handleMouseUp = () => {
     setIsDrawing(false);
   };
-
-  // グリッドの状態を JSON 文字列に変換してテキスト出力
-  const gridToText = (): string => JSON.stringify(grid);
 
   return (
     <div className="App" onMouseUp={handleMouseUp}>
@@ -155,13 +169,44 @@ const App: React.FC = () => {
         <h3>結果</h3>
         <h4>palette</h4>
         <textarea
-          readOnly
-          value={JSON.stringify([color1, color2, color3])}
+          value={paletteInput}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+            setPaletteInput(e.target.value)
+          }
+          onBlur={(e: React.FocusEvent<HTMLTextAreaElement>) => {
+            try {
+              const newPalette = JSON.parse(e.target.value);
+              if (Array.isArray(newPalette) && newPalette.length === 3) {
+                setColor1(newPalette[0]);
+                setColor2(newPalette[1]);
+                setColor3(newPalette[2]);
+              }
+            } catch (err) {
+              console.error("Invalid JSON", err);
+            }
+          }}
           rows={2}
           cols={50}
         />
         <h4>matrix</h4>
-        <textarea readOnly value={gridToText()} rows={10} cols={50} />
+        <textarea
+          value={gridInput}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+            setGridInput(e.target.value)
+          }
+          onBlur={(e: React.FocusEvent<HTMLTextAreaElement>) => {
+            try {
+              const newGrid = JSON.parse(e.target.value);
+              if (Array.isArray(newGrid)) {
+                setGrid(newGrid);
+              }
+            } catch (err) {
+              console.error("Invalid JSON", err);
+            }
+          }}
+          rows={10}
+          cols={50}
+        />
       </div>
     </div>
   );
